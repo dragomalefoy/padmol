@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+.links {
+  visibility: hidden;
+}
+
+ul.links.show {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  visibility: visible;
+  width: 100vw;
+  z-index: 2;
+  height: 100vh;
+  li {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 15vh;
+    justify-content: center;
+    list-style: none;
+    width: 100%;
+    a {
+      color: #394e75;
+      font-family: "Londrina Sketch", cursive;
+      font-size: 8vh;
+      text-decoration: none;
+      text-transform: capitalize;
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.1s;
+    }
+  }
+}
+
+//////////////the button//////
+.nav-tgl {
+  background-color: royalblue;
+  border-radius: 60%;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  cursor: pointer;
+  display: inline-block;
+  height: 10vh;
+  line-height: 0.6;
+  padding: 0;
+  position: fixed;
+  right: 5vw;
+  top: 5vh;
+  text-align: center;
+  width: 10vh;
+  z-index: 10;
+  //the dividers
+  > span {
+    // the second divider
+    background: #293335;
+    border-radius: 1px;
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 34px;
+
+    // the first & the third dividers
+    &:before,
+    &:after {
+      background: #293335;
+      border-radius: 1px;
+      content: "";
+      display: inline-block;
+      height: 2px;
+      position: absolute;
+      // for the hover
+      transition: all 200ms;
+    }
+    &:before {
+      left: 3px;
+      top: -11px;
+      width: 28px;
+    }
+    &:after {
+      left: 6px;
+      top: 11px;
+      width: 22px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover > span:after,
+  &:hover > span:before {
+    left: 0;
+    width: 34px;
+  }
+}
+////////////////////////
+// for the nav background/
+.nav:before {
+  background-color: #ffa7b3;
+  clip-path: circle(30px at calc(100% - 65px) 65px);
+  content: "";
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.1s;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 1;
+}
+
+// when activated//
+.menu.active {
+  .nav:before {
+    clip-path: circle(100%);
+    visibility: visible;
+  }
+
+  // button changes when activated //
+  .nav-tgl > span {
+    height: 0;
+    &:after,
+    &:before {
+      left: 0;
+      top: 0px;
+      width: 34px;
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+  }
+}

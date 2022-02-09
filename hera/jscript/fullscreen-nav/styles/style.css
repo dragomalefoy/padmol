@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
+.links {
+  visibility: hidden;
+}
+
+ul.links.show {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  visibility: visible;
+  width: 100vw;
+  z-index: 2;
+  height: 100vh;
+}
+ul.links.show li {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 15vh;
+  justify-content: center;
+  list-style: none;
+  width: 100%;
+}
+ul.links.show li a {
+  color: #394e75;
+  font-family: "Londrina Sketch", cursive;
+  font-size: 8vh;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.1s;
+}
+
+.nav-tgl {
+  background-color: royalblue;
+  border-radius: 60%;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  cursor: pointer;
+  display: inline-block;
+  height: 10vh;
+  line-height: 0.6;
+  padding: 0;
+  position: fixed;
+  right: 5vw;
+  top: 5vh;
+  text-align: center;
+  width: 10vh;
+  z-index: 10;
+}
+.nav-tgl > span {
+  background: #293335;
+  border-radius: 1px;
+  display: inline-block;
+  height: 2px;
+  position: relative;
+  vertical-align: middle;
+  width: 34px;
+}
+.nav-tgl > span:before, .nav-tgl > span:after {
+  background: #293335;
+  border-radius: 1px;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  position: absolute;
+  transition: all 200ms;
+}
+.nav-tgl > span:before {
+  left: 3px;
+  top: -11px;
+  width: 28px;
+}
+.nav-tgl > span:after {
+  left: 6px;
+  top: 11px;
+  width: 22px;
+}
+.nav-tgl:focus {
+  outline: none;
+}
+.nav-tgl:hover > span:after, .nav-tgl:hover > span:before {
+  left: 0;
+  width: 34px;
+}
+
+.nav:before {
+  background-color: #ffa7b3;
+  -webkit-clip-path: circle(30px at calc(100% - 65px) 65px);
+          clip-path: circle(30px at calc(100% - 65px) 65px);
+  content: "";
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.1s;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 1;
+}
+
+.menu.active .nav:before {
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
+  visibility: visible;
+}
+.menu.active .nav-tgl > span {
+  height: 0;
+}
+.menu.active .nav-tgl > span:after, .menu.active .nav-tgl > span:before {
+  left: 0;
+  top: 0px;
+  width: 34px;
+}
+.menu.active .nav-tgl > span:after {
+  transform: rotate(-45deg);
+}
+.menu.active .nav-tgl > span:before {
+  transform: rotate(45deg);
+}/*# sourceMappingURL=style.css.map */
